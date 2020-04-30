@@ -27,10 +27,18 @@ export function getCookie(name) {
     return ''
 }
 
+export function removeCookie(name) {
+    setCookie(name, '', -1)
+}
+
 export function setStorage(name, val) {
     localStorage.setItem(name, JSON.stringify(val))
 }
 
 export function getStorage(name) {
     return JSON.parse(localStorage.getItem(name))
+}
+
+export function removeStorage(name) {
+    localStorage.removeItem(name)
 }

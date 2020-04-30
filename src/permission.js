@@ -9,10 +9,14 @@ import getPageTitle from './utils/get-page-title'
 const whiteList = ['login', 'register', 'registerResult'] // no redirect whitelist
 
 router.beforeEach((to, from, next) => {
+    // set page title
+    document.title = getPageTitle(to.meta.title)
+
+    // determine whether the user has logged in
     const hasToken = getStorage(ACCESS_TOKEN)
 
     if (hasToken) {
-        if (to.path === '/user/login') {
+        if (to.path === '/login') {
             next({ path: '/' })
         }
     } else {
